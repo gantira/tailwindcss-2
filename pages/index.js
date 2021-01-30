@@ -15,7 +15,13 @@ function Home(props) {
     }
 
     useEffect(() => {
-        document.querySelector('html').classList.add(localStorage.getItem('theme'))
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+
+        localStorage.removeItem('theme')
     }, [])
 
     return (
@@ -35,7 +41,7 @@ function Home(props) {
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, rerum assumenda iusto laudantium laborum voluptatibus perferendis repellendus harum, dolorum deserunt illo laboriosam delectus sequi quia aliquam temporibus facere vitae eveniet.
                         </div>
                     </div>
-                    <div className="px-10 py-6 bg-white dark:bg-gray-900 border-gray-200 dark:text-gray-200">
+                    <div className="px-10 py-6 bg-white border-t dark:border-transparent dark:bg-gray-900 border-gray-200 dark:text-gray-200">
                         Lorem ipsum dolor sit amet.
                     </div>
                 </div>
