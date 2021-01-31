@@ -1,10 +1,10 @@
 import React from 'react';
-import Gradient from '../components/Gradient';
+import Button from '../components/Button';
 
 const Home = () => {
     return (
-        <div>
-            <Gradient />
+        <div className="p-24">
+            <Button />
         </div>
     );
 };
